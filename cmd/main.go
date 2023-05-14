@@ -28,6 +28,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	root.Scene.Init()
+
 	// Print out the new struct
 	fmt.Printf("%+v\n", root)
 }
