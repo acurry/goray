@@ -1,11 +1,26 @@
 package point
 
-import "math"
+import (
+	"math"
+)
 
 type Point struct {
 	x float64
 	y float64
 	z float64
+}
+
+func (a *Point) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	var pointDetails []float64
+	if err := unmarshal(&pointDetails); err != nil {
+		return err
+	}
+
+	a.x = pointDetails[0]
+	a.y = pointDetails[1]
+	a.z = pointDetails[2]
+
+	return nil
 }
 
 func New() *Point {
