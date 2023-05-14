@@ -7,31 +7,19 @@ import (
 )
 
 type Sphere struct {
-	radius     float64
-	shininess  int64
-	reflection float64
-	center     *point.Point
-	ambient    *point.Point
-	diffuse    *point.Point
-	specular   *point.Point
-}
-
-func New() *Sphere {
-	return &Sphere{
-		radius:     0.0,
-		shininess:  0,
-		reflection: 0.0,
-		center:     point.New(),
-		ambient:    point.New(),
-		diffuse:    point.New(),
-		specular:   point.New(),
-	}
+	Radius     float64
+	Shininess  int64
+	Reflection float64
+	Center     point.Point `yaml:",flow"`
+	Ambient    point.Point `yaml:",flow"`
+	Diffuse    point.Point `yaml:",flow"`
+	Specular   point.Point `yaml:",flow"`
 }
 
 func (s *Sphere) CheckIntersect(origin *point.Point, direction *point.Point) float64 {
-	b := 2.0 * direction.Dot(origin.Sub(s.center))
-	x := origin.Sub(s.center)
-	c := x.Normal() - (s.radius * s.radius)
+	b := 2.0 * direction.Dot(origin.Sub(&s.Center))
+	x := origin.Sub(&s.Center)
+	c := x.Normal() - (s.Radius * s.Radius)
 
 	delta := (b * b) - (4.0 * c)
 	if delta > 0.0 {

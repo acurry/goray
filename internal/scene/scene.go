@@ -7,36 +7,19 @@ import (
 )
 
 type screen struct {
-	left   float64
-	top    float64
-	right  float64
-	bottom float64
+	Left   float64
+	Top    float64
+	Right  float64
+	Bottom float64
 }
 
 type Scene struct {
-	width    int32
-	height   int32
-	maxDepth int32
-	light    *light.Light
-	shapes   []sphere.Sphere
-	ratio    float64
-	*screen
-	camera *point.Point
-}
-
-func New() *Scene {
-	return &Scene{
-		width:    0,
-		height:   0,
-		maxDepth: 0,
-		light:    light.New(),
-		shapes:   make([]sphere.Sphere, 10),
-		ratio:    0.0,
-		screen: &screen{
-			left:   0.0,
-			top:    0.0,
-			right:  0.0,
-			bottom: 0.0,
-		},
-	}
+	Width    int32
+	Height   int32
+	MaxDepth int32 `yaml:"max_depth"`
+	Light    light.Light
+	Shapes   []sphere.Sphere
+	Ratio    float64
+	*screen  `yaml:",omitempty"`
+	Camera   point.Point `yaml:",flow"`
 }

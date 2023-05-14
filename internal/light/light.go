@@ -18,17 +18,8 @@ class Light:
 */
 
 type Light struct {
-	position *point.Point
-	ambient  *point.Point
-	diffuse  *point.Point
-	specular *point.Point
-}
-
-func New() *Light {
-	return &Light{
-		point.New(),
-		point.New(),
-		point.New(),
-		point.New(),
-	}
+	Position point.Point `yaml:",flow"`
+	Ambient  point.Point `yaml:",flow"`
+	Diffuse  point.Point `yaml:",flow"`
+	Specular point.Point `yaml:",flow"`
 }

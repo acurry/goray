@@ -23,10 +23,6 @@ func (a *Point) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	return nil
 }
 
-func New() *Point {
-	return &Point{0.0, 0.0, 0.0}
-}
-
 func (a *Point) Dot(b *Point) float64 {
 	return (a.x * b.x) + (a.y * b.y) + (a.z * b.z)
 }
