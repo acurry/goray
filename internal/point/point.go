@@ -129,3 +129,37 @@ func (a *Point) Div(x float64) *Point {
 		a.z / x,
 	}
 }
+
+func Clip(point *Point, min, max float64) *Point {
+	var x float64
+	var y float64
+	var z float64
+
+	if point.x >= max {
+		x = max
+	} else if point.x >= min && point.x < max {
+		x = point.x
+	} else {
+		x = min
+	}
+
+	if point.y >= max {
+		y = max
+	} else if point.y >= min && point.y < max {
+		y = point.y
+	} else {
+		y = min
+	}
+
+	if point.z >= max {
+		z = max
+	} else if point.z >= min && point.z < max {
+		z = point.z
+	} else {
+		z = min
+	}
+
+	return &Point{
+		x, y, z,
+	}
+}
