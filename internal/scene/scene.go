@@ -22,16 +22,16 @@ type Scene struct {
 	Light    light.Light
 	Shapes   []sphere.Sphere
 	Ratio    float64
-	*screen  `yaml:",omitempty"`
+	Screen   screen      `yaml:",omitempty"`
 	Camera   point.Point `yaml:",flow"`
 }
 
 func (s *Scene) Init() {
 	s.Ratio = float64(s.Width) / float64(s.Height)
-	s.Left = -1.0
-	s.Top = 1.0 / s.Ratio
-	s.Right = 1.0
-	s.Bottom = -1.0 / s.Ratio
+	s.Screen.Left = -1.0
+	s.Screen.Top = 1.0 / s.Ratio
+	s.Screen.Right = 1.0
+	s.Screen.Bottom = -1.0 / s.Ratio
 }
 
 func (s *Scene) NearestIntersect(

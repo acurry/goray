@@ -17,9 +17,8 @@ type Sphere struct {
 }
 
 func (s *Sphere) CheckIntersect(origin *point.Point, direction *point.Point) float64 {
-	b := 2.0 * direction.Dot(origin.Sub(&s.Center))
-	x := origin.Sub(&s.Center)
-	c := x.Normal() - (s.Radius * s.Radius)
+	b := 2.0 * direction.Dot(point.Sub(origin, &s.Center))
+	c := point.Sub(origin, &s.Center).Normal() - (s.Radius * s.Radius)
 
 	delta := (b * b) - (4.0 * c)
 	if delta > 0.0 {
