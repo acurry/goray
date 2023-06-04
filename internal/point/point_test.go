@@ -21,85 +21,85 @@ func TestClip(t *testing.T) {
 			name: "All coords less than min",
 			args: args{
 				point: &Point{
-					x: -1.0,
-					y: -1.0,
-					z: -1.0,
+					X: -1.0,
+					Y: -1.0,
+					Z: -1.0,
 				},
 				min: 0.0,
 				max: 1.0,
 			},
 			want: &Point{
-				x: 0.0,
-				y: 0.0,
-				z: 0.0,
+				X: 0.0,
+				Y: 0.0,
+				Z: 0.0,
 			},
 		},
 		{
 			name: "All coords greater than max",
 			args: args{
 				point: &Point{
-					x: 2.0,
-					y: 3.0,
-					z: 4.0,
+					X: 2.0,
+					Y: 3.0,
+					Z: 4.0,
 				},
 				min: 0.0,
 				max: 1.0,
 			},
 			want: &Point{
-				x: 1.0,
-				y: 1.0,
-				z: 1.0,
+				X: 1.0,
+				Y: 1.0,
+				Z: 1.0,
 			},
 		},
 		{
 			name: "only x within bounds",
 			args: args{
 				point: &Point{
-					x: 0.5,
-					y: 3.0,
-					z: 4.0,
+					X: 0.5,
+					Y: 3.0,
+					Z: 4.0,
 				},
 				min: 0.0,
 				max: 1.0,
 			},
 			want: &Point{
-				x: 0.5,
-				y: 1.0,
-				z: 1.0,
+				X: 0.5,
+				Y: 1.0,
+				Z: 1.0,
 			},
 		},
 		{
 			name: "only y within bounds",
 			args: args{
 				point: &Point{
-					x: 2.5,
-					y: 0.5,
-					z: 4.0,
+					X: 2.5,
+					Y: 0.5,
+					Z: 4.0,
 				},
 				min: 0.0,
 				max: 1.0,
 			},
 			want: &Point{
-				x: 1.0,
-				y: 0.5,
-				z: 1.0,
+				X: 1.0,
+				Y: 0.5,
+				Z: 1.0,
 			},
 		},
 		{
 			name: "only z within bounds",
 			args: args{
 				point: &Point{
-					x: 2.5,
-					y: 3.5,
-					z: 0.5,
+					X: 2.5,
+					Y: 3.5,
+					Z: 0.5,
 				},
 				min: 0.0,
 				max: 1.0,
 			},
 			want: &Point{
-				x: 1.0,
-				y: 1.0,
-				z: 0.5,
+				X: 1.0,
+				Y: 1.0,
+				Z: 0.5,
 			},
 		},
 	}
@@ -199,9 +199,9 @@ func TestPoint_Dot(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &Point{
-				x: tt.fields.x,
-				y: tt.fields.y,
-				z: tt.fields.z,
+				X: tt.fields.x,
+				Y: tt.fields.y,
+				Z: tt.fields.z,
 			}
 			if got := a.Dot(tt.args.b); got != tt.want {
 				t.Errorf("Point.Dot() = %v, want %v", got, tt.want)
@@ -292,9 +292,9 @@ func TestPoint_Cross(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &Point{
-				x: tt.fields.x,
-				y: tt.fields.y,
-				z: tt.fields.z,
+				X: tt.fields.x,
+				Y: tt.fields.y,
+				Z: tt.fields.z,
 			}
 			if got := a.Cross(tt.args.b); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Point.Cross() = %v, want %v", got, tt.want)

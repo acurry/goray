@@ -16,9 +16,9 @@ type screen struct {
 }
 
 type Scene struct {
-	Width    int32
-	Height   int32
-	MaxDepth int32 `yaml:"max_depth"`
+	Width    int
+	Height   int
+	MaxDepth int `yaml:"max_depth"`
 	Light    light.Light
 	Shapes   []sphere.Sphere
 	Ratio    float64
