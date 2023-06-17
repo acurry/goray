@@ -15,3 +15,6 @@
 # vendor/
 
 bin/
+
+# docs folder (contains ray tracer challenge PDF)
+docs/
